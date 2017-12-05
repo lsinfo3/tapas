@@ -11,7 +11,9 @@ DEBUG_LEVEL = int(os.environ.get('DEBUG', -1))
 def debug(level, s, *args):
     if DEBUG_LEVEL >= level or level == 0:
         #print '%s [%s]' %(strftime('%Y-%m-%d-%H.%M.%S'), __name__),
-        print s %args
+        ts = '%d ' % int(time()*100)
+        b = s %args
+        print ts + b
 
 ### get HTTP page
 from twisted.web import client
@@ -40,9 +42,9 @@ def getPage(url, contextFactory=None, *args, **kwargs):
         from twisted.internet import ssl
         if contextFactory is None:
             contextFactory = ssl.ClientContextFactory()
-        reactor.connectSSL(host, port, factory, contextFactory)
+        reactor.connectSSL(host, port, factory, contextFactory, timeout=240)
     else:
-        reactor.connectTCP(host, port, factory)
+        reactor.connectTCP(host, port, factory, timeout=240)
     return factory
 
 ### files usage

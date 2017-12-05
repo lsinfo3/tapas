@@ -23,6 +23,7 @@ class BaseParser(object):
         self.playlists_type = playlists_type
         self.video_container = video_container
         self.deferred = defer.Deferred()
+        self.real_segment_duration = []
 
     def __repr__(self):
         return '<BaseParser-%d>' %id(self)
@@ -64,6 +65,11 @@ class BaseParser(object):
         if self.fragment_duration < 0:
             raise AttributeError("Fragment duration has not been set yet.")
         return self.fragment_duration
+    
+    def getRealSegmentDuration(self,ind):
+       
+        return self.real_segment_duration[ind]
+
 
     def getVideoContainer(self):
         '''

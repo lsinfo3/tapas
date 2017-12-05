@@ -19,7 +19,7 @@ from twisted.internet import defer, reactor
 from utils_py.util import debug, format_bytes
 from BaseMediaEngine import BaseMediaEngine
 
-DEBUG = 2
+DEBUG = 0 #2
 
 class GstMediaEngine(BaseMediaEngine):
     #qtdemux for video/mp4
@@ -111,10 +111,12 @@ demux.
         if self.getQueuedTime() >= self.min_queue_time and self.status == self.PAUSED:
             self.pipeline.set_state(gst.STATE_PLAYING)
             self.status = self.PLAYING
+            debug(DEBUG, '%s running', self)
             self.emit('status-changed')
         elif self.getQueuedTime() == 0 and self.status == self.PLAYING:
             self.pipeline.set_state(gst.STATE_PAUSED)
             self.status = self.PAUSED
+            debug(DEBUG, '%s underrun', self)
             self.emit('status-changed')
         reactor.callLater(0.1, self.onRunning)
 
@@ -128,7 +130,7 @@ demux.
     def pushData(self, data, fragment_duration, level, caps_data):
         buf = gst.Buffer(data)
         buf.duration = long(fragment_duration*1e9)
-        debug(DEBUG, '%s pushData: pushed %s of data (duration= %ds) for level %s', self, 
+        debug(DEBUG, '%s pushData: pushed %s of data (duration= %.2fs) for level %s', self, 
             format_bytes(len(data)),
             fragment_duration,
             level)
