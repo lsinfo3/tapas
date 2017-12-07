@@ -113,7 +113,7 @@ def select_player():
     #StartPlayer
     from TapasPlayer import TapasPlayer
     player = TapasPlayer(controller=controller, parser=parser, media_engine=media_engine,
-        log_sub_dir=log_sub_dir, log_period=1,
+        log_sub_dir=log_sub_dir, log_period=0.1,
         max_buffer_time=p,
         inactive_cycle=1, initial_level=0,
         use_persistent_connection=persistent_conn,

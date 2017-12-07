@@ -27,7 +27,7 @@ class TapasPlayer(object):
 
     def __init__(self, controller, parser, media_engine, 
         log_sub_dir='', log_period=0.1,
-        max_buffer_time=60,
+        max_buffer_time=40,
         inactive_cycle=1, initial_level=0,
         use_persistent_connection=True,
         check_warning_buffering=True,
