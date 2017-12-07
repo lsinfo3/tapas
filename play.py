@@ -62,14 +62,29 @@ def select_player():
     if options['controller'] == 'conventional':
         from controllers.ConventionalController import ConventionalController
         controller = ConventionalController()
-        controller.setIdleDuration(4)
-    elif options['controller'] == 'tobasco':
-        from controllers.TOBASCOController import TOBASCOController
-        controller = TOBASCOController()
     elif options['controller'] == 'max':
         check_warning_buffering=False
         from controllers.MaxQualityController import MaxQualityController
         controller = MaxQualityController()
+    elif options['controller'] == 'bytes':
+        from controllers.QueuedBytesController import QueuedBytesController
+        controller = QueuedBytesController()
+    elif options['controller'] == 'elastic':
+        from controllers.NewElasticDeadzoneController import NewElasticDeadzoneController
+        controller = NewElasticDeadzoneController(0.02,0.001)
+    elif options['controller'] == 'hyst':
+        from controllers.HysteresisOptimalController import HysteresisOptimalController
+        controller = HysteresisOptimalController(3,7)
+    elif options['controller'] == 'panda':
+        from controllers.PandaController import PandaController
+        controller = PandaController()
+    elif options['controller'] == 'festive':
+        from controllers.FestiveController import FestiveController
+        controller = FestiveController()
+    elif options['controller'] == 'guided':
+        from controllers.GuidedController import GuidedController
+        controller = GuidedController()
+
     else:
         print 'Error. Unknown Control Algorithm'
         sys.exit()
