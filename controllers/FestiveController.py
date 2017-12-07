@@ -27,7 +27,7 @@ class FestiveController(BaseController):
         self.bwe_vec = CircularBuffer(self.horizon) 
         self.switches = CircularBuffer(self.horizon)
         self.iteration = 0
-        self.target_buf = 10 # seconds
+        self.target_buf = 40 # seconds
         self.alpha = 12
 
     def __repr__(self):

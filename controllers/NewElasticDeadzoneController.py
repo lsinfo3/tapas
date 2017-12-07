@@ -22,7 +22,7 @@ class NewElasticDeadzoneController(BaseController):
 
     def __init__(self, k1, k2):
         super(NewElasticDeadzoneController, self).__init__()
-        self.queue_target = 32
+        self.queue_target = 40
         self.k1 = k1
         self.k2 = k2
         self.t_last = -1

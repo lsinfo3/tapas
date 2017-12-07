@@ -28,7 +28,7 @@ class ConventionalController(BaseController):
         self.t_last = -1
         self.filter_old = -1
         #Controller parameters
-        self.Q = 15 #seconds
+        self.Q = 40 #seconds
         self.alpha = 0.2 #Ewma filter
         self.eps = 0.15
         self.steady_state = False

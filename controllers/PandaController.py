@@ -29,7 +29,7 @@ class PandaController(BaseController):
         #Controller parameters
         self.k = 0.14
         self.w = 300000.0/8. #Units??? (it should be Mbps)
-        self.Q = 30 #seconds
+        self.Q = 40 #seconds
         self.beta = 0.2
         self.alpha = 0.2 #Ewma filter
         self.x_hat_last = 0
