@@ -33,7 +33,7 @@ class TOBASCOController(BaseController):
         self.conf = {
             "B_min": 5,
             "B_low": 10,
-            "B_high": 50,
+            "B_high": 40,
             "delta_beta": 1,
             "delta_t": 5,
             "alpha_1": 0.75,

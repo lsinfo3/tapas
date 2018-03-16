@@ -40,6 +40,8 @@ def select_player():
     if float(options['min_queue_time']) >= 0:
         mqtime=float(options['min_queue_time'])
 
+    mqtime=15
+
     #MediaEngine
     if options['media_engine'] == 'gst':
         #gst_init()
@@ -109,6 +111,7 @@ def select_player():
     p = 40
     if float(options['max_buffer_time']) >= 0:
         p=float(options['max_buffer_time'])
+    p = 40
 
     #StartPlayer
     from TapasPlayer import TapasPlayer
